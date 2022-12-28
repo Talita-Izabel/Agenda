@@ -12,12 +12,16 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar']
 const TOKEN_PATH = path.join(process.cwd(), 'token.json')
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json')
 
-export default async function verifyAuth(req, res, next) {
+// eslint-disable-next-line no-unused-vars
+export default async function verifyAuth(req = null, res = null, next = null) {
   let client = await loadSavedCredentialsIfExist()
   if (client) {
-    req.auth = client
-    next()
-    return
+    console.log('entrou cleinte')
+    if (req) {
+      req.auth = client
+      next()
+    }
+    return client
   }
   client = await authenticate({
     scopes: SCOPES,
@@ -26,8 +30,12 @@ export default async function verifyAuth(req, res, next) {
   if (client.credentials) {
     await saveCredentials(client)
   }
-  req.auth = client
-  next()
+
+  if (req) {
+    req.auth = client
+    next()
+  }
+  return client
 }
 
 /**
@@ -52,7 +60,6 @@ async function loadSavedCredentialsIfExist() {
  * @return {Promise<void>}
  */
 async function saveCredentials(client) {
-    console.log(client)
   const content = await fs.readFile(CREDENTIALS_PATH)
   const keys = JSON.parse(content)
   const key = keys.installed || keys.web

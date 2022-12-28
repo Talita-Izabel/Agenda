@@ -60,3 +60,4 @@ class Bot {
 }
 
 export default new Bot()
+//module.exports = { Operator: new Bot() }

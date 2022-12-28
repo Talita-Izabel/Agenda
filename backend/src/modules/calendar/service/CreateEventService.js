@@ -1,4 +1,5 @@
 import Bot from '../../../utils/Bot'
+import { updateEvent } from '../../../utils/ScheduleEvents'
 
 const { google } = require('googleapis')
 
@@ -24,6 +25,8 @@ export class CreateEventService {
       // Envia mensagem para o bot
       let text = `Evento '${body.summary}' criado!\n${body.description}\nInício: ${start}\nFim: ${end}`
       await Bot.sendMessage(text)
+
+      updateEvent()
 
       return res
     } catch (error) {

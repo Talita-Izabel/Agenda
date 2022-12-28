@@ -1,4 +1,5 @@
 import Bot from '../../../utils/Bot'
+import { updateEvent } from '../../../utils/ScheduleEvents'
 
 const { google } = require('googleapis')
 
@@ -24,6 +25,8 @@ export class DeleteEventService {
       // Envia mensagem para o bot
       let text = `Evento '${event.summary}' deletado!\n${event.description}`
       await Bot.sendMessage(text)
+
+      updateEvent()
 
       console.log(res)
       return res
