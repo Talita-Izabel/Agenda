@@ -1,3 +1,5 @@
+import Bot from '../../../utils/Bot'
+
 const { google } = require('googleapis')
 
 export class UpdateEventService {
@@ -11,6 +13,16 @@ export class UpdateEventService {
         calendarId: 'primary',
         resource: body,
       })
+
+      let start = body.start.date || body.start.dateTime
+      start = start.split('T')[0]
+
+      let end = body.end.date || body.end.dateTime
+      end = end.split('T')[0]
+
+      // Envia mensagem para o bot
+      let text = `Evento '${body.summary}' atualizado!\n${body.description}\nInício: ${start}\nFim: ${end}`
+      await Bot.sendMessage(text)
 
       console.log(res)
       return res

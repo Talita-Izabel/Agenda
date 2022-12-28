@@ -1,3 +1,5 @@
+import Bot from '../../../utils/Bot'
+
 const { google } = require('googleapis')
 
 export class CreateEventService {
@@ -11,7 +13,18 @@ export class CreateEventService {
         resource: body,
       })
 
-      console.log(res)
+      let start = body.start.date || body.start.dateTime
+      start = start.split('T')[0]
+
+      let end = body.end.date || body.end.dateTime
+      end = end.split('T')[0]
+
+      console.log(body.start, body.end, start, end)
+
+      // Envia mensagem para o bot
+      let text = `Evento '${body.summary}' criado!\n${body.description}\nInício: ${start}\nFim: ${end}`
+      await Bot.sendMessage(text)
+
       return res
     } catch (error) {
       console.error(error)

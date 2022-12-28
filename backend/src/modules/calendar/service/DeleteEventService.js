@@ -1,3 +1,5 @@
+import Bot from '../../../utils/Bot'
+
 const { google } = require('googleapis')
 
 export class DeleteEventService {
@@ -5,11 +7,23 @@ export class DeleteEventService {
     try {
       const calendar = google.calendar({ version: 'v3', auth })
 
+      let event = await calendar.events.get({
+        auth,
+        eventId,
+        calendarId: 'primary',
+      })
+
+      event = event.data
+
       let res = await calendar.events.delete({
         auth,
         eventId,
         calendarId: 'primary',
       })
+
+      // Envia mensagem para o bot
+      let text = `Evento '${event.summary}' deletado!\n${event.description}`
+      await Bot.sendMessage(text)
 
       console.log(res)
       return res
