@@ -19,13 +19,16 @@ export class GetEventsService {
       }
       console.log('Upcoming 10 events:')
       events.map((event) => {
+        console.log(event)
         const start = event.start.dateTime || event.start.date
         const end = event.end.dateTime || event.end.date
         eventsArr.push({
           id: event.id,
           start,
-          description: event.summary,
+          summary: event.summary,
+          description: event.description,
           end,
+          location: event.location,
         })
       })
       console.log(events)
