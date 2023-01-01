@@ -11,7 +11,7 @@ async function init() {
 }
 
 async function startBree() {
-  console.log('startBree', jobs)
+  //console.log('startBree', jobs)
   bree = new Bree({
     jobs,
   })

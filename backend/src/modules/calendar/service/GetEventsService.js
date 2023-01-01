@@ -63,7 +63,7 @@ export class GetEventsService {
           location: event.location,
         })
       })
-      console.log(events)
+      //console.log(events)
 
       return eventsArr
     } catch (error) {

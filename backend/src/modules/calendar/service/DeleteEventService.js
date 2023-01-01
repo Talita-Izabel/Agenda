@@ -28,7 +28,6 @@ export class DeleteEventService {
 
       updateEvent()
 
-      console.log(res)
       return res
     } catch (error) {
       console.error(error)

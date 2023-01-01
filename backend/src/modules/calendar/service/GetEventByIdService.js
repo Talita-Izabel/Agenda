@@ -11,8 +11,6 @@ export class GetEventByIdService {
         eventId,
       })
 
-      console.log(res)
-
       let event = {
         creator: res.data.creator.email,
         description: res.data.description,
