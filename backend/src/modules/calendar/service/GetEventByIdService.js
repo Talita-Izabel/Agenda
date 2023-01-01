@@ -12,7 +12,17 @@ export class GetEventByIdService {
       })
 
       console.log(res)
-      return res.data
+
+      let event = {
+        creator: res.data.creator.email,
+        description: res.data.description,
+        summary: res.data.summary,
+        location: res.data.location,
+        start: res.data.start.date || res.data.start.dateTime,
+        end: res.data.end.date || res.data.end.dateTime,
+      }
+
+      return event
     } catch (error) {
       console.error(error)
       return { error }

@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar.vue";
     <!--<h1>Teste</h1>-->
     <NavBar />
 
-  <router-view />
+    <router-view />
   </div>
 </template>
 

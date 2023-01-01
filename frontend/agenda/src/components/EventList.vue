@@ -9,7 +9,7 @@
             <div class="card-body">
               <div class="row justify-content-between">
                 <h5 class="col-4 card-title">{{ event.summary }}</h5>
-                <button class="col-4 btn" @click="deleteEvent()">
+                <button class="col-4 btn" @click="deleteEvent(event.id)">
                   <i class="fa fa-trash"></i>
                 </button>
               </div>
@@ -23,8 +23,7 @@
                 {{ event.start }} <br />
                 {{ event.end }}
               </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <a @click="updateEvent(event.id)" class="card-link">Atualizar</a>
             </div>
           </div>
         </div>
@@ -42,8 +41,17 @@ export default {
     this.getEvents();
   },
   methods: {
-    deleteEvent() {
-      console.log("banana de pijama");
+    async deleteEvent(id) {
+      console.log("banana de pijama", id);
+      let result = await axios.delete(
+        `http://localhost:5969/calendar/delete/event/${id}`
+      );
+      console.log(result);
+
+      // Remove o evento do array
+      this.events.forEach((event, index) => {
+        if (event.id == id) this.events.splice(index, 1);
+      });
     },
     async getEvents() {
       console.log("getEvents");
@@ -52,7 +60,15 @@ export default {
       );
 
       this.events = result.data.events;
+
       console.log(this.events);
+    },
+    details(id) {
+      console.log("details", id);
+    },
+    updateEvent(id) {
+      console.log("updateEvent", id);
+      this.$router.replace({ path: `/atualizar/:id`, query: { id } });
     },
   },
   data() {
