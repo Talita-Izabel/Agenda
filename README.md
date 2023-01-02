@@ -5,6 +5,7 @@ Trabalho de Web Services 'Agenda' que utiliza a combinação de duas APIs ([Goog
 No back-end foi utilizado [Node.js](https://nodejs.org/en/about/) com express para realizar a comunicação com o fron-end. No front-end foi utilizado o [Vue.js](https://vuejs.org/). Como a api apenas notifica por e-mail ou pop-up, foi utilizado a biblioteca [Bree](https://github.com/breejs/bree) para realizar o agendamento dos eventos.
 
 *GitHub Pages* - https://talita-izabel.github.io/Agenda/
+
 *Bot* - @NyyyyxBot
 
 ### APIs
