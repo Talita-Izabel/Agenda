@@ -1,5 +1,6 @@
 <template>
   <div class="container align-self-center">
+    <h2>Atualizar Evento</h2>
     <div class="mb-3">
       <label for="summary" class="form-label">Titulo</label>
       <input

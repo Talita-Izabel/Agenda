@@ -20,19 +20,111 @@
             <span class="fs-4">&nbsp Agenda</span>
           </div>
         </div>
-      </header>
+    </header>
 
-      <div class="container text-start pt-5" style="color: #434040;">
-        <h3>Sobre...</h3>
+    <div class="container text-start pt-5" style="color: #434040;">
+      <h3>Trabalho Agenda - Introdução</h3>
+    </div>
+    <div class="container text-center pt-3">
+      <p>Trabalho de Web Services 'Agenda' que utiliza a combinação de duas APIs 
+          (Google Calendar e Telegram). Este trabalho tem como funcionalidade de criar, listar, editar, deletar 
+          e avisar no horário dos eventos da Agenda Google, onde em cada uma dessas ações serão notificadas no Telegram (Bot). 
+          Atualmente os métodos de entrega/notificação oferecidos pelo Google Agenda são por e-mail ou pop-up.</p>
+
+      <img src="assets/inicio.png" class="img-thumbnail" alt="...">            
+    </div>
+
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-6">
+          <p>
+            No back-end foi utilizado Node.js com express para realizar a comunicação com o fron-end. No front-end foi utilizado
+            o Vue.js. Como a api apenas notifica por e-mail ou pop-up, foi utilizado a biblioteca Bree para realizar o agendamento dos eventos.
+          </p>
+        </div>
+        <div class="col-6">
+          <img style="width: 150px;" src="assets/vue.png" class="float-end" alt="vue">
+          <img style="width: 150px;" src="assets/node.png" class="float-end" alt="node">
+        </div>
       </div>
-      <div class="container text-center pt-3">
-        <p style="text-align: justify; color:#585757 ">Trabalho de Web Services 'Agenda' que utiliza a combinação de duas APIs 
-            (Google Calendar e Telegram). Este trabalho tem como funcionalidade de criar, listar, editar, deletar 
-            e avisar no horário dos eventos da Agenda Google, onde em cada uma dessas ações serão notificadas no Telegram (Bot). 
-            Atualmente os métodos de entrega/notificação oferecidos pelo Google Agenda são por e-mail ou pop-up.</p>
+    </div>
 
-        <img src="assets/inicio.png" class="img-thumbnail" alt="...">            
+    <div class="container pt-5">
+      <h2> Telas </h2>
+      <div class="row pt-3">
+        <div class="col-6">
+          <img style="width: 270px;" src="assets/telaCadastrarEvento.png" class="img-fluid float-start" alt="Tela Cadastro">
+        </div>
+        <div class="col-6">
+          <h4>Cadastrar Evento</h4>
+          <p>Tela de cadastro de evento possui os campos necessários para a criação de um evento, como titulo
+            descrição, local e se o evento ocorrerá o dia inteiro (apenas data) ou terá um horário específico
+            (data e hora). O evento será criado na agenda principal do cliente das credenciais que localizado 
+            em token.json. <br>
+            Após a criação do evento, o bot irá enviar a notificação para o chat do cliente, informando sobre
+            o evento criado. O bot também irá notificar sobre o evento no horário informado.
+          </p>
+        </div>
       </div>
+    </div>
 
+    <div class="container pt-5">
+      <div class="row pt-3">
+        <div class="col-6">
+          <h4>Atualizar Evento</h4>
+          <p>
+            A tela de atualizar eventos é semelhante a tela de criar eventos, apenas com o campo criador a mais.
+            Nessa tela poderá ser alterado o tipo de evento dia inteiro ou horário específico. <br>
+            Após a atualização do evento, o bot irá enviar a notificação para o chat do cliente, informando sobre
+            a atualização evento que foi realizada.
+          </p>
+        </div>
+        <div class="col-6">
+          <img style="width: 270px;" src="assets/telaAtualizarEvento.png" class="img-fluid float-end" alt="Tela Atualizar Evento">
+        </div>
+      </div>
+    </div>
+
+    <div class="container pt-5">
+      <div class="row pt-3">
+        <div class="col-6">
+          <img style="width: 270px;" src="assets/telaListaEventos.png" class="img-fluid float-start" alt="Tela Lista Evento">
+        </div>
+        <div class="col-6">
+          <h4>Lista de Eventos</h4>
+          <p>
+            A tela de listagem de eventos, irá exibir os eventos do cliente, exibindo o titulo, descrição e horário.
+            Nessa tela também será possível editar ou excluir um evento. Caso um evento seja excluido, o bot também 
+            irá notificar ao cliente sobre a exclusão do evento.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pt-5">
+      <h2> Video de Apresentação </h2>
+    </div>
 </body>
 </html>
+
+<style>
+p{
+  text-align: justify; 
+  color:#585757;
+  line-height: 30px;
+  padding-top: 5px;
+}
+
+h4, h2{
+  color: #434040;
+}
+
+h2 {
+  padding-bottom: 17px;
+}
+
+h4{
+  padding-bottom: 8px;
+}
+
+</style>

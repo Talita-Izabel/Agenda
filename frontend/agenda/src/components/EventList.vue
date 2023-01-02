@@ -5,7 +5,7 @@
     <div class="container align-self-center">
       <div v-for="event in this.events" :key="event.id">
         <div class="row d-flex justify-content-center">
-          <div class="card" style="width: 21rem">
+          <div class="card" style="width: 23rem">
             <div class="card-body">
               <div class="row justify-content-between">
                 <h5 class="col-4 card-title">{{ event.summary }}</h5>

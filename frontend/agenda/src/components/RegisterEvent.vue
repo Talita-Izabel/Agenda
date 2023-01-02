@@ -1,6 +1,7 @@
 <template>
   <div class="container align-self-center">
-    <div class="mb-3">
+    <h2>Cadastrar Evento</h2>
+    <div class="mb-3 pt-2">
       <label for="summary" class="form-label">Titulo</label>
       <input type="text" class="form-control" v-model="summary" id="summary" />
     </div>
