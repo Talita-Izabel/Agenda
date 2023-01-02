@@ -2,6 +2,8 @@
 
 Trabalho de Web Services 'Agenda' que utiliza a combinação de duas APIs ([Google Calendar](https://developers.google.com/calendar/api/guides/overview) e [Telegram](https://core.telegram.org/bots/api)). Este trabalho tem como funcionalidade de criar, listar, editar, deletar e avisar no horário dos eventos da Agenda Google, onde em cada uma dessas ações serão notificadas no Telegram (Bot). Atualmente os [métodos de entrega](https://developers.google.com/calendar/api/concepts/reminders?hl=en)/notificação oferecidos pelo Google Agenda são por e-mail ou pop-up.
 
+No back-end foi utilizado [Node.js](https://nodejs.org/en/about/) com express para realizar a comunicação com o fron-end. No front-end foi utilizado o [Vue.js](https://vuejs.org/). Como a api apenas notifica por e-mail ou pop-up, foi utilizado a biblioteca [Bree](https://github.com/breejs/bree) para realizar o agendamento dos eventos.
+
 ### APIs
 * [Google Calendar](https://developers.google.com/calendar/api/guides/overview)
 * [Telegram](https://core.telegram.org/bots/api)
