@@ -119,7 +119,14 @@ export default {
       console.log("update");
       console.log(this.event);
 
+      console.log(
+        this.chekbox,
+        this.event.start,
+        this.event.start.includes("T")
+      );
+
       if (!this.chekbox && this.event.start.includes("T")) {
+        console.log("entrou 1 start", this.event.start);
         let dateAux = this.event.start;
         let dateArr = this.event.start.split("T")[0].split("-");
         let hourArr = this.event.start.split("T")[1].split(":");
@@ -135,14 +142,23 @@ export default {
           timeZone: "America/Sao_Paulo",
         };
 
-        if (this.event.length == 0) {
+        if (this.event.end.length == 0) {
           this.event.end = dateAux;
         }
 
+        console.log("end ", this.event.end);
+
         dateEnd = new Date();
         dateArr = this.event.end.split("T")[0].split("-");
-        this.event.end = dateAux;
+        //this.event.end = dateAux;
+        if (!this.event.end.includes("T")) {
+          dateAux = dateAux.split("T")[1];
+          this.event.end = this.event.end + "T" + dateAux;
+        }
         hourArr = this.event.end.split("T")[1].split(":");
+
+        console.log("end 2", this.event.end);
+        console.log("hourArr", hourArr);
 
         dateEnd.setDate(dateArr[2]);
         dateEnd.setMonth(dateArr[1] - 1);
@@ -154,9 +170,17 @@ export default {
           dateTime: dateEnd.toISOString("pt-br"),
           timeZone: "America/Sao_Paulo",
         };
-      } else if (this.chekbox && !this.event.start.includes("T")) {
+      } else if (
+        (this.chekbox && !this.event.start.includes("T")) ||
+        (!this.chekbox && !this.event.start.includes("T")) ||
+        (this.chekbox && this.event.start.includes("T"))
+      ) {
+        let dateFormat = this.event.start || this.event.start.date;
+        dateFormat = dateFormat.split("T")[0];
+
+        console.log("entrou 2");
         this.event.start = {
-          date: this.event.start,
+          date: dateFormat, //this.event.start || this.event.start.date,
         };
 
         if (!this.event.end.includes("T")) {

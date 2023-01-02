@@ -16,7 +16,6 @@ const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json')
 export default async function verifyAuth(req = null, res = null, next = null) {
   let client = await loadSavedCredentialsIfExist()
   if (client) {
-    console.log('entrou cleinte')
     if (req) {
       req.auth = client
       next()
